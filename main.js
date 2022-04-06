@@ -25,6 +25,10 @@ function Got_Results(error,results) {
     if(error){console.error(error);}
     else{
         console.log(results)
+        var syn = window.speechSynthesis;
+    var speakdata = results[0].label
+    var utter = new SpeechSynthesisUtterance(speakdata)
+    syn.speak(utter)
         document.getElementById("Accuracy").innerHTML="ACCURACY :"+results[0].confidence.toFixed(2);
         document.getElementById("Person").innerHTML="PERSON :"+results[0].label
     }
