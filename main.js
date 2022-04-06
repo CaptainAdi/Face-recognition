@@ -17,3 +17,15 @@ classifier=ml5.imageClassifier('https://teachablemachine.withgoogle.com/models/p
 function model_loaded() {
     console.log("model_is_loaded")
 }
+function Check() {
+    img=document.getElementById("frame");
+    classifier.classify(img,Got_Results) 
+}
+function Got_Results(error,results) {
+    if(error){console.error(error);}
+    else{
+        console.log(results)
+        document.getElementById("Accuracy").innerHTML="ACCURACY :"+results[0].confidence.toFixed(2);
+        document.getElementById("Person").innerHTML="PERSON :"+results[0].label
+    }
+}
